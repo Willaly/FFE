@@ -1,0 +1,267 @@
+/* ============================================================
+   FFE — François Frigoriste Expert
+   Feuille de styles globale — basée sur le Design System FFE
+   Couleurs glacier · Archivo / Manrope / JetBrains Mono
+   ============================================================ */
+
+:root{
+  /* ink + surfaces */
+  --ink:#0A1422; --ink-2:#16223A;
+  --steel-900:#1F2C45; --steel-700:#38465F; --steel-500:#5C6A82;
+  --steel-300:#98A3B6; --steel-200:#C7CEDB; --steel-100:#E5E9F0;
+  --frost:#F2F5F8; --frost-2:#E9EEF3; --white:#FFFFFF;
+  /* brand */
+  --deep:#062B45; --glacier:#0E6FA8; --glacier-2:#1187C6;
+  --ice:#BFE3F0; --frost-blue:#DCEEF6;
+  /* signal */
+  --signal:#E85A1A; --signal-2:#F37B2D; --signal-3:#FFE5D2;
+  /* sémantique */
+  --ok:#1F9D6F; --warn:#E8B41A; --err:#D14545;
+  /* rayons */
+  --r-xs:4px; --r-sm:8px; --r-md:12px; --r-lg:18px; --r-xl:28px;
+  /* ombres */
+  --sh-1:0 1px 0 rgba(10,20,34,.04),0 1px 2px rgba(10,20,34,.06);
+  --sh-2:0 4px 14px rgba(10,20,34,.08),0 1px 2px rgba(10,20,34,.05);
+  --sh-3:0 18px 40px -12px rgba(10,20,34,.25),0 4px 12px rgba(10,20,34,.08);
+  --grid:8px;
+  --maxw:1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--frost);color:var(--ink);
+  font-family:"Manrope",system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  font-size:16px;line-height:1.5;
+}
+::selection{background:var(--ice);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ── Typographie ────────────────────────────────────── */
+h1,.h1{font-family:"Archivo";font-weight:800;font-size:clamp(40px,6vw,64px);letter-spacing:-.025em;line-height:1.02;margin:0 0 16px}
+h2,.h2{font-family:"Archivo";font-weight:800;font-size:clamp(30px,4vw,44px);letter-spacing:-.02em;line-height:1.05;margin:0 0 14px}
+h3,.h3{font-family:"Archivo";font-weight:700;font-size:clamp(20px,2.4vw,24px);letter-spacing:-.01em;line-height:1.2;margin:0 0 8px}
+h4,.h4{font-family:"Archivo";font-weight:700;font-size:18px;margin:0 0 6px}
+p{margin:0 0 14px}
+.lede{font-size:clamp(17px,2vw,19px);line-height:1.55;color:var(--steel-500);max-width:62ch}
+.mono{font-family:"JetBrains Mono",monospace}
+.muted{color:var(--steel-500)}
+
+/* ── Layout ─────────────────────────────────────────── */
+.container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.section{padding:clamp(56px,9vw,96px) 0}
+.section--alt{background:var(--white)}
+.section--deep{background:var(--deep);color:#fff}
+.section--deep .lede,.section--deep .muted{color:rgba(255,255,255,.72)}
+.grid{display:grid;gap:24px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.center{text-align:center}
+.center .lede{margin-inline:auto}
+
+/* ── Eyebrow / labels ───────────────────────────────── */
+.eyebrow{
+  font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--glacier);
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--glacier)}
+.section--deep .eyebrow{color:var(--ice)}
+.section--deep .eyebrow::before{background:var(--ice)}
+
+/* ── Boutons ────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:"Manrope";font-weight:700;font-size:14px;letter-spacing:.01em;
+  padding:14px 22px;border-radius:var(--r-sm);border:1px solid transparent;
+  cursor:pointer;transition:.18s ease;line-height:1;text-decoration:none;
+}
+.btn-primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-primary:hover{background:#000}
+.btn-signal{background:var(--signal);color:#fff;border-color:var(--signal)}
+.btn-signal:hover{background:var(--signal-2)}
+.btn-glacier{background:var(--glacier);color:#fff;border-color:var(--glacier)}
+.btn-glacier:hover{background:var(--glacier-2)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--steel-200)}
+.btn-ghost:hover{border-color:var(--ink);background:var(--white)}
+/* Boutons "ghost" sur fonds sombres : texte toujours blanc */
+.section--deep .btn-ghost,
+.hero .btn-ghost,
+.cta-band .btn-ghost,
+.page-head .btn-ghost{color:#fff;border-color:rgba(255,255,255,.45)}
+.section--deep .btn-ghost:hover,
+.hero .btn-ghost:hover,
+.cta-band .btn-ghost:hover,
+.page-head .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.10);color:#fff}
+.btn-lg{padding:17px 28px;font-size:15px}
+
+/* ── Cartes ─────────────────────────────────────────── */
+.card{background:var(--white);border:1px solid var(--steel-100);border-radius:var(--r-md);padding:24px;box-shadow:var(--sh-1)}
+.card--link{transition:.2s ease;display:block}
+.card--link:hover{transform:translateY(-3px);box-shadow:var(--sh-3);border-color:var(--ice)}
+.card .ico{
+  width:46px;height:46px;border-radius:var(--r-sm);display:grid;place-items:center;
+  background:var(--frost-blue);color:var(--glacier);margin-bottom:16px;
+}
+.card .ico svg{width:24px;height:24px}
+.card h3{margin-bottom:6px}
+.card .arrow{color:var(--glacier);font-family:"JetBrains Mono";font-size:12px;
+  letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin-top:14px;
+  display:inline-flex;gap:6px;align-items:center}
+
+/* ── Badge ──────────────────────────────────────────── */
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;
+  font-family:"JetBrains Mono";font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:500;border:1px solid transparent}
+.badge-ice{background:var(--frost-blue);color:var(--glacier)}
+.badge-ok{background:rgba(31,157,111,.12);color:var(--ok)}
+.badge-signal{background:var(--signal-3);color:var(--signal)}
+
+/* ── Header ─────────────────────────────────────────── */
+.topbar{background:var(--deep);color:#fff;font-family:"JetBrains Mono";font-size:12px;letter-spacing:.04em}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;height:38px}
+.topbar a{display:inline-flex;align-items:center;gap:7px;opacity:.85;transition:.15s}
+.topbar a:hover{opacity:1;color:var(--ice)}
+.topbar .tb-social{display:flex;gap:18px}
+
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--steel-100)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+/* Logo officiel FFE (SVG du design system) */
+.ffe-logo{display:block;height:40px;width:auto}
+.site-footer .ffe-logo{height:46px}
+@media(max-width:640px){.ffe-logo{height:34px}}
+.brand-mark{width:42px;height:42px;border-radius:var(--r-sm);background:var(--deep);
+  display:grid;place-items:center;color:var(--ice);flex-shrink:0}
+.brand-mark svg{width:24px;height:24px}
+.brand-name{font-family:"Archivo";font-weight:800;font-size:16px;letter-spacing:-.01em;line-height:1.05}
+.brand-name small{display:block;font-family:"JetBrains Mono";font-weight:500;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--glacier);margin-top:2px}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{font-size:13.5px;font-weight:600;color:var(--steel-700);padding:9px 12px;border-radius:var(--r-sm);transition:.15s}
+.nav a:hover{color:var(--ink);background:var(--frost)}
+.nav a.active{color:var(--glacier)}
+.header-cta{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-toggle{display:none;background:none;border:1px solid var(--steel-200);border-radius:var(--r-sm);
+  width:44px;height:42px;cursor:pointer;align-items:center;justify-content:center}
+.nav-toggle svg{width:22px;height:22px}
+
+/* ── Hero ───────────────────────────────────────────── */
+.hero{position:relative;background:
+  radial-gradient(1100px 480px at 80% -10%,rgba(17,135,198,.20),transparent 60%),
+  linear-gradient(180deg,var(--deep),#04243b);
+  color:#fff;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:46px 46px;mask-image:radial-gradient(700px 400px at 75% 10%,#000,transparent)}
+.hero .container{position:relative;z-index:1;padding-top:clamp(56px,9vw,96px);padding-bottom:clamp(56px,9vw,96px)}
+.hero .lede{color:rgba(255,255,255,.78)}
+.hero h1 span{color:var(--ice)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero-stats{display:flex;gap:32px;margin-top:34px;flex-wrap:wrap}
+.hero-stats .stat .n{font-family:"Archivo";font-weight:800;font-size:34px;line-height:1;color:#fff}
+.hero-stats .stat .l{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ice);margin-top:6px}
+.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r-lg);padding:26px;backdrop-filter:blur(6px)}
+.hero-card h3{color:#fff}
+.hero-card .line{display:flex;gap:12px;align-items:flex-start;padding:11px 0;
+  border-top:1px solid rgba(255,255,255,.1)}
+.hero-card .line:first-of-type{border-top:0}
+.hero-card .line svg{width:20px;height:20px;color:var(--ice);flex-shrink:0;margin-top:2px}
+.hero-card .line span{color:rgba(255,255,255,.82);font-size:14.5px}
+
+/* ── Liste à coches ─────────────────────────────────── */
+.checklist{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.checklist li{display:flex;gap:12px;align-items:flex-start}
+.checklist li svg{width:22px;height:22px;color:var(--ok);flex-shrink:0;margin-top:1px}
+
+/* ── Étapes process ─────────────────────────────────── */
+.steps{counter-reset:step;display:grid;gap:20px}
+.step{display:flex;gap:18px;align-items:flex-start}
+.step .num{counter-increment:step;flex-shrink:0;width:42px;height:42px;border-radius:50%;
+  background:var(--deep);color:var(--ice);font-family:"Archivo";font-weight:800;
+  display:grid;place-items:center}
+.step .num::before{content:counter(step)}
+
+/* ── CTA bande ──────────────────────────────────────── */
+.cta-band{background:linear-gradient(120deg,var(--glacier),var(--deep));color:#fff;
+  border-radius:var(--r-xl);padding:clamp(32px,5vw,56px);text-align:center;box-shadow:var(--sh-3)}
+.cta-band h2{color:#fff}
+.cta-band .lede{color:rgba(255,255,255,.82);margin-inline:auto}
+
+/* ── Contact ────────────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+.contact-item{display:flex;gap:14px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--steel-100)}
+.contact-item:first-child{border-top:0}
+.contact-item .ico{width:44px;height:44px;border-radius:var(--r-sm);background:var(--frost-blue);
+  color:var(--glacier);display:grid;place-items:center;flex-shrink:0}
+.contact-item .ico svg{width:22px;height:22px}
+.contact-item .k{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--steel-500)}
+.contact-item .v{font-weight:700;font-size:16px}
+.form-field{margin-bottom:16px}
+.form-field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+.form-field input,.form-field textarea,.form-field select{
+  width:100%;padding:13px 14px;border:1px solid var(--steel-200);border-radius:var(--r-sm);
+  font-family:inherit;font-size:15px;background:var(--white);color:var(--ink);transition:.15s}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{
+  outline:none;border-color:var(--glacier);box-shadow:0 0 0 3px rgba(14,111,168,.15)}
+
+/* ── Footer ─────────────────────────────────────────── */
+.site-footer{background:var(--ink);color:rgba(255,255,255,.7);padding:64px 0 28px;font-size:14px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:44px}
+.site-footer h4{color:#fff;font-family:"JetBrains Mono";font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase;font-weight:500;margin-bottom:16px}
+.site-footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.site-footer a:hover{color:var(--ice)}
+.site-footer .brand-name{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px}
+.footer-bottom .mono{color:rgba(255,255,255,.5);letter-spacing:.04em}
+.footer-bottom a{color:rgba(255,255,255,.6)}
+
+/* ── Page header (sous-pages) ───────────────────────── */
+.page-head{background:linear-gradient(180deg,var(--deep),#06314f);color:#fff;
+  padding:clamp(48px,7vw,84px) 0 clamp(40px,6vw,64px);position:relative;overflow:hidden}
+.page-head::after{content:"";position:absolute;inset:0;opacity:.4;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:42px 42px;
+  mask-image:radial-gradient(600px 320px at 85% 0,#000,transparent)}
+.page-head .container{position:relative;z-index:1}
+.page-head .lede{color:rgba(255,255,255,.78)}
+.breadcrumb{font-family:"JetBrains Mono";font-size:11.5px;letter-spacing:.06em;
+  color:var(--ice);margin-bottom:18px;display:flex;gap:8px;align-items:center}
+.breadcrumb a{opacity:.8}.breadcrumb a:hover{opacity:1}
+
+/* ── Utilitaires ────────────────────────────────────── */
+.mt-0{margin-top:0}.mb-0{margin-bottom:0}
+.feature-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.zones{display:flex;flex-wrap:wrap;gap:10px}
+.zones .badge{background:var(--white);border-color:var(--steel-100);color:var(--steel-700)}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media(max-width:960px){
+  .hero-grid,.feature-split,.contact-grid{grid-template-columns:1fr}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .nav,.topbar .tb-social{display:none}
+  .nav-toggle{display:flex}
+  .site-header .container{height:64px}
+  .nav.open{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;
+    background:var(--white);border-bottom:1px solid var(--steel-100);padding:12px;gap:2px;box-shadow:var(--sh-2)}
+  .nav.open a{padding:13px 14px}
+}
+@media(max-width:640px){
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .header-cta .btn-ghost{display:none}
+  .hero-stats{gap:24px}
+}
